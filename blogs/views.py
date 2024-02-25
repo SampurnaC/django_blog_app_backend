@@ -2,6 +2,7 @@ from .models import Blog
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .serializers import BlogSerializer
+from rest_framework import filters, generics
 # from rest_framework import viewsets
 
 # class BlogView(viewsets.ModelViewSet):
@@ -48,3 +49,16 @@ def blogDelete(request, pk):
     blog.delete()
 
     return Response('Deleted successfully')
+
+# class BlogsAPIView(generics.ListCreateAPIView):
+#     search_fields = ['name']
+#     filter_backends = (filters.SearchFilter,)
+#     queryset = Blog.objects.all()
+#     serializer_class = BlogSerializer
+
+@api_view(['GET'])
+def blogSearch(request):
+    q = request.GET['search']
+    blog = Blog.objects.filter(name__icontains=q)
+    serializer = BlogSerializer(blog, many=True)
+    return Response(serializer.data)
