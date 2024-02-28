@@ -1,6 +1,6 @@
 venv/
 db.sqlite3
-blogs/__pycache__
-blogs/migrations/__pycache__
+blogs_api/__pycache__
+blogs_api/migrations/__pycache__
 core/__pycache__
 media/
