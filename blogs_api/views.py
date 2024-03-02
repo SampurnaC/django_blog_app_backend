@@ -1,7 +1,7 @@
-from .models import Blog
+from .models import Blog, Category
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .serializers import BlogSerializer
+from .serializers import BlogSerializer, CategorySerializer
 from rest_framework import filters, generics
 from rest_framework.pagination import PageNumberPagination
 
@@ -12,11 +12,11 @@ from rest_framework.pagination import PageNumberPagination
 #     serializer_class = BlogSerializer
 
 
-@api_view(['GET'])
-def blogLists(request):
-    blogs = Blog.objects.all()
-    serializer = BlogSerializer(blogs, many=True)
-    return Response(serializer.data)
+# @api_view(['GET'])
+# def blogLists(request):
+#     blogs = Blog.objects.all()
+#     serializer = BlogSerializer(blogs, many=True)
+#     return Response(serializer.data)
 
 
 @api_view(['GET'])
@@ -42,9 +42,9 @@ def blogDetail(request,pk):
 
 @api_view(['POST'])
 def blogCreate(request):
-    # breakpoint()
     serializer = BlogSerializer(data=request.data)
     # file = request.data['image']
+
     if serializer.is_valid():
         serializer.save()
 
@@ -93,3 +93,10 @@ def blogPaginate(request):
     result_page = paginator.paginate_queryset(blogs, request)
     serializer = BlogSerializer(result_page, many=True)
     return paginator.get_paginated_response(serializer.data)
+
+
+@api_view(['GET'])
+def categoryLists(request):
+    categories = Category.objects.all()
+    serializer = CategorySerializer(categories, many=True)
+    return Response(serializer.data)
