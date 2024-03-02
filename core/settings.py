@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'blogs_api.apps.BlogsAPIConfig',
     'rest_framework',
     'corsheaders',
+    'django_seed',
 ]
 
 REST_FRAMEWORK = {
