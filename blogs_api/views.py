@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from .serializers import BlogSerializer, CategorySerializer
 from rest_framework import filters, generics
 from rest_framework.pagination import PageNumberPagination
+from django.shortcuts import get_object_or_404
 
 # from rest_framework import viewsets
 
@@ -22,7 +23,7 @@ from rest_framework.pagination import PageNumberPagination
 @api_view(['GET'])
 def blogList(request):
     paginator = PageNumberPagination()
-    paginator.page_size = 8
+    paginator.page_size = 6
 
     blogs = Blog.objects.get_queryset().order_by('id')
     # blogs = Blog.objects.all()
@@ -42,10 +43,12 @@ def blogDetail(request,pk):
 
 @api_view(['POST'])
 def blogCreate(request):
+    # breakpoint()
     serializer = BlogSerializer(data=request.data)
-    # file = request.data['image']
 
+    # file = request.data['image']
     if serializer.is_valid():
+
         serializer.save()
 
 
@@ -99,4 +102,10 @@ def blogPaginate(request):
 def categoryLists(request):
     categories = Category.objects.all()
     serializer = CategorySerializer(categories, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def categoryBlogs(request, slug):
+    category_blogs = Blog.objects.filter(category=slug)
+    serializer = BlogSerializer(category_blogs, many=True)
     return Response(serializer.data)
