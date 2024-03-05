@@ -12,6 +12,8 @@ urlpatterns = [
     path('search/', views.blogSearch, name='search-blog'),
 
 
-    path('category-lists/', views.categoryLists, name='category-lists'),
+    path('category-list/', views.categoryLists, name='category-lists'),
+    path('category/<slug:slug>', views.categoryBlogs, name='category-blogs'),
+
 
 ]
