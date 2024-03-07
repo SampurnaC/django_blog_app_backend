@@ -7,12 +7,15 @@ class BlogSerializer(serializers.ModelSerializer):
     # category_name = serializers.CharField(source="category.name", read_only=True)
     class Meta:
         model = Blog
-        fields = ['name','description', 'category']
+        fields = '__all__'
     def to_representation(self, obj):
         return {
+            "id": obj.id,
             "name": obj.name,
             "description": obj.description,
-            "category": obj.category.name
+            "category": obj.category.name,
+            "image": obj.image.url,
+            "artist": obj.artist,
         }
        
 class CategorySerializer(serializers.ModelSerializer):
