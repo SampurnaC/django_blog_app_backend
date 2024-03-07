@@ -4,7 +4,11 @@ from rest_framework.response import Response
 from .serializers import BlogSerializer, CategorySerializer
 from rest_framework import filters, generics
 from rest_framework.pagination import PageNumberPagination
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, redirect
+from bs4 import BeautifulSoup
+import requests
+from PIL import Image
+from django.contrib import messages
 
 # from rest_framework import viewsets
 
@@ -49,8 +53,63 @@ def blogCreate(request):
     # file = request.data['image']
     if serializer.is_valid():
 
-        serializer.save()
+        # post = serializer.save(commit=False)
+        post = serializer.validated_data
+        # website = requests.get(request.data['url'])
+        # breakpoint()
 
+
+
+        website = requests.get(request.data['url'])
+
+        sourcecode = BeautifulSoup(website.text, 'html.parser')
+
+
+        image = sourcecode.find('img', class_='tB6UZ').get('src')
+
+
+        # find_image = sourcecode.select('meta[content^="https://unsplash.com/photos/"]')
+
+        
+        # try:
+        #     image = find_image[0]['content']
+        #     # imgsize = Image.open(requests.get(img['src'], stream=True).raw)
+
+        # except:
+        #     messages.error(request, 'Requested image is not on Flickr!')
+        #     return redirect('blog-list')
+        post['image'] = image
+        
+
+
+        # sourcecode.select('.MorZF')
+
+
+        find_title = sourcecode.select('h1.la4U2')
+        try:
+            # breakpoint()
+            name = find_title[0].text.strip()
+            post['name'] = name
+            # serializer.name=name
+            # serializer.update(name=name)
+
+        except IndexError as e:
+            print(f"IndexError: {e}")
+
+        
+
+
+
+        find_artist = sourcecode.select('a.N2odk')
+        try:
+
+            artist = find_artist[0].text.strip() 
+            # post.artist = artist
+            post['artist'] = artist
+        except IndexError as e:
+            print(f"IndexError: {e}")
+
+        serializer.save()
 
     return Response(serializer.data)
 
