@@ -14,11 +14,13 @@ class Category(models.Model):
 class Blog(models.Model):
     name = models.CharField(max_length=150, null=True, blank=True)
     artist = models.CharField(max_length=500, null=True, blank=True)
-    url = models.URLField(max_length=500, null=True, blank=True) 
+    url = models.URLField(max_length=2000, null=True, blank=True) 
     description = models.TextField()
-    image = models.ImageField(upload_to='', null=True, blank=True, default='/default.jpg')
+    image = models.URLField(max_length=2000, default="test")
+    # image = models.ImageField(upload_to='images/', null=True, blank=True, default='/default.jpg')
+    
     # category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name="category", db_constraint=False)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name="category", default='django')
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name="category", default=1)
 
    
     def __str__(self):
