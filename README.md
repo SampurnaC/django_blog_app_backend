@@ -4,7 +4,7 @@
 https://github.com/SampurnaC/django_blog_app_backend/assets/11813341/0355d294-4eb7-4d39-827e-42b89735f486
 
 
-# GoCardless sample application
+# Unsplash Blogging Application
 
 ## Setup
 
@@ -18,16 +18,16 @@ $ cd sample-django-app
 Create a virtual environment to install dependencies in and activate it:
 
 ```sh
-$ virtualenv2 --no-site-packages env
-$ source env/bin/activate
+$ python -m venv venv
+$ source venv/bin/activate
 ```
 
 Then install the dependencies:
 
 ```sh
-(env)$ pip install -r requirements.txt
+(venv)$ pip install -r requirements.txt
 ```
-Note the `(env)` in front of the prompt. This indicates that this terminal
+Note the `(venv)` in front of the prompt. This indicates that this terminal
 session operates in a virtual environment set up by `virtualenv2`.
 
 Once `pip` has finished downloading the dependencies:
