@@ -26,8 +26,6 @@ session operates in a virtual environment set up by `virtualenv2`.
 
 Once `pip` has finished downloading the dependencies:
 
-https://github.com/SampurnaC/django_blog_app_backend/assets/11813341/bc88b29e-5a71-40fc-8088-58f921e3178e
-
 
 ```sh
 (env)$ cd project
@@ -36,10 +34,11 @@ https://github.com/SampurnaC/django_blog_app_backend/assets/11813341/bc88b29e-5a
 And navigate to `http://127.0.0.1:8000/gocardless/`.
 ```
 
-https://github.com/SampurnaC/django_blog_app_backend/assets/11813341/e568bf46-e023-440e-8ddc-a2e5dfe130b2
+[https://github.com/SampurnaC/django_blog_app_backend/assets/11813341/e568bf46-e023-440e-8ddc-a2e5dfe130b2
 
 
-https://github.com/SampurnaC/django_blog_app_backend/assets/11813341/e01688dd-d35d-477e-85ec-097c54322c1d
+https://github.com/SampurnaC/django_blog_app_backend/assets/11813341/e01688dd-d35d-477e-85ec-097c54322c1d](https://github.com/SampurnaC/django_blog_app_backend/assets/11813341/bc88b29e-5a71-40fc-8088-58f921e3178e
+)
 
 
 
