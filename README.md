@@ -37,10 +37,8 @@ Once `pip` has finished downloading the dependencies:
 (env)$ cd project
 (env)$ python manage.py runserver
 ```
-And navigate to `http://127.0.0.1:8000/gocardless/`.
+And navigate to `http://localhost:8000`.
 ```
 
-
-https://github.com/SampurnaC/django_blog_app_backend/assets/11813341/75418562-c5c5-4f23-b9d5-c84f15fffa96
 
 
