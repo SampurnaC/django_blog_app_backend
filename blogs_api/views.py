@@ -20,6 +20,8 @@ def blogList(request):
     serializer = BlogSerializer(result_page, many=True)
     return paginator.get_paginated_response(serializer.data)
 
+    
+
 
 @api_view(['GET'])
 def blogDetail(request,pk):
@@ -35,15 +37,20 @@ def blogCreate(request):
         post = serializer.validated_data
         website = requests.get(request.data['url'])
         sourcecode = BeautifulSoup(website.text, 'html.parser')
-        image = sourcecode.find('img', class_='tB6UZ').get('src')
-        post['image_url'] = image
-        find_title = sourcecode.select('h1.la4U2')
+        # image = sourcecode.find('img', class_='tB6UZ').get('src')
+        image = sourcecode.find('img', class_='ApbSI').get('src')
+        post['image'] = image
+        # find_title = sourcecode.select('h1.la4U2')
+        find_title = sourcecode.select('h1.z5s87')
+        
         try:
             name = find_title[0].text.strip()
             post['name'] = name
         except IndexError as e:
             print(f"IndexError: {e}")
-        find_artist = sourcecode.select('a.N2odk')
+        # find_artist = sourcecode.select('a.N2odk')
+        find_artist = sourcecode.select('a.BkSVh')
+        
         try:
             artist = find_artist[0].text.strip() 
             post['artist'] = artist

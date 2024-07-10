@@ -14,7 +14,7 @@ class BlogSerializer(serializers.ModelSerializer):
             "name": obj.name,
             "description": obj.description,
             "category": obj.category.name,
-            "image": obj.image.url,
+            "image": obj.image,
             "artist": obj.artist,
         }
        
