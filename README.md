@@ -31,3 +31,7 @@ Once `pip` has finished downloading the dependencies:
 ```
 And navigate to `http://127.0.0.1:8000/gocardless/`.
 ```
+
+https://github.com/SampurnaC/django_blog_app_backend/assets/11813341/e568bf46-e023-440e-8ddc-a2e5dfe130b2
+
+
