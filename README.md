@@ -1,3 +1,9 @@
+
+
+
+https://github.com/SampurnaC/django_blog_app_backend/assets/11813341/0355d294-4eb7-4d39-827e-42b89735f486
+
+
 # GoCardless sample application
 
 ## Setup
